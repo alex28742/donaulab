@@ -1,0 +1,185 @@
+
+/* .seminar-content {padding: 20px 0;  text-align: center;}
+.seminar-content h1 {font-weight: 700; font-size: 36px;}
+.seminar-content p {padding: 0 0 20px 0; margin: 0;}
+.sem_intro {padding: 0 0 20px 0; margin: 0 0 30px 0; border-bottom: 5px solid #cccccc;}
+.sem_intro .title {font-size: 30px; padding: 0 0 20px 0; }
+.sem_intro .sem_logo img {border: 1px solid #cccccc;}
+
+.doklad_tab {width: 100%; margin: 0 0 30px 0;}
+.doklad_tab td {text-align: left; border-bottom: 1px solid #e6e6e6; padding: 20px 10px 0 10px; vertical-align: top;}
+.doklad_tab td b {display: block; font-size: 1.125em; text-transform: uppercase;}
+.bttn {
+  display: inline-block; height: 54px; line-height: 54px; color: #ffffff; text-decoration: none; text-transform: uppercase; font-size: 20px; font-weight: 700; padding: 0 20px; border: 0; border-radius: 10px; cursor: pointer;
+background: #4593cb;
+  background: -moz-linear-gradient(top, #4593cb 0%, #016bb7 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4593cb), color-stop(100%,#016bb7));
+  background: -webkit-linear-gradient(top, #4593cb 0%,#016bb7 100%);
+  background: -o-linear-gradient(top, #4593cb 0%,#016bb7 100%);
+  background: -ms-linear-gradient(top, #4593cb 0%,#016bb7 100%);
+  background: linear-gradient(to bottom, #4593cb 0%,#016bb7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4593cb', endColorstr='#016bb7',GradientType=0 );
+}
+.bttn:hover {background: #016bb7; color: #ffffff;}
+.bttn_brdr {background: #ffffff; padding: 0 20px; font-size: 1.125em; height: 40px; line-height: 38px; text-transform: uppercase;}
+
+
+form#sem-zayavka {text-align: left; margin: 0 auto 20px auto; width: 335px; color: #666666;}
+form#sem-zayavka input[type=text],
+form#sem-zayavka input[type=email] {width: 100%; text-align: left; padding: 0 10px; height: 50px; line-height: 50px; border-radius: 5px; border: 1px solid #cccccc;}
+form#sem-zayavka input[type=text].error,
+form#sem-zayavka input[type=email].error {border: 1px solid red !important;}
+.img_line {padding: 20px 0; border-top: 1px solid #e6e6e6;}
+.img_line img {margin: 0 10px; border: 7px solid #e6e6e6;}
+.sem_autor { background: url(http://donaulab.ru/wp-content/themes/donaulab/img/bg.jpg) 50% 50% no-repeat; background-size: cover; padding: 30px 0;}
+.table-box.autor_tab {width: auto; margin: 0 auto 30px auto;}
+.table-box.autor_tab > div {vertical-align: middle; padding: 0 10px; text-align: left;}
+.table-box.autor_tab > div.img span {display: block; border-radius: 50%; overflow: hidden; border: 7px solid #e6e6e6;}
+.table-box.autor_tab > div.img span img {display: block; border-radius: 50%;margin: 0;}
+.table-box.autor_tab > div.txt .title {font-weight: 700; font-size: 1.5em; line-height: 100%; text-transform: uppercase;}
+.table-box.autor_tab > div.txt p {padding: 0 0 5px 0; font-size: 1.25em;}
+
+.sem-footer {font-size: 0.875em; padding: 20px 0 0 0; border-top: 1px solid #cccccc;}
+.small {font-style: italic; font-size: 0.875em;}
+.small input { margin: 0 10px 0 0; vertical-align: middle;}
+.img_line a {display: inline-block; vertical-align: middle; width: 28.5%; margin: 0 1%;}
+.img_line a img {width: 100%; height: auto;}
+.bttn {background: #9eff00;}
+.bttn:hover {background: #94d32e;}
+
+
+
+@media screen and (max-width: 1030px) {
+.img_line img {width: 150px; height: auto;}
+}
+@media screen and (max-width: 500px) {
+.sem_intro .sem_logo img {display: block; margin: 0 auto 20px auto;}
+.doklad_tab td img {width: 70px; height: auto;}
+form#sem-zayavka { padding: 0 10px;  width: 100%;}
+.table-box.autor_tab,
+.table-box.autor_tab > div {display: block; padding: 0 0 20px 0; text-align: center;}
+.table-box.autor_tab > div.img span {width: 250px; margin: 0 auto;}
+.table-box.autor_tab > div.img img {width: 100%; height: auto;}
+} */
+
+
+/* #menu{ z-index: 2; top:10px; left:10px; clear:both; border:1px solid #666; padding:5px; background:#fff;} */
+#menu a{margin-left:5px; margin-right:5px;}
+#container{position:relative; left:0; width:10000px; top:0; height:100%;}
+#c1,#c2,#c3,#c4,#c5,#c6 {width:1600px; height:100%; float:left; margin-right:100px;}
+/* #c1,#c3,#c5 {background: #ffffff url(http://pcvector.net/templates/pcv/images/bg_grid.png);} */
+#c2,#c4,#c6 {background:#B5E0FE;}
+/* .content{padding:80px 600px 20px 30px; } */
+
+
+
+
+/*  */
+div.tabscontainer{
+    margin:15px 0px;
+}
+
+div.tabscontainer div.tabs{
+    list-style: none;
+    width: 260px;
+    cursor: pointer;
+    float:left;
+    margin-top: 10px;
+    left: 0px;
+    z-index: 999;
+    position: relative;
+    min-height: 500px;
+    background: #fff;
+}
+
+div.tabscontainer div.curvedContainer{
+	margin-left: 259px;
+	/* border:1px solid #7c7c77; */
+	min-height:1000px;
+	/* -moz-border-radius: 13px; */
+	/* border-radius: 13px; */
+}
+
+div.tabscontainer div.curvedContainer .tabcontent{
+	display:none;
+	padding:20px;
+	font-size:12px;
+	font-family: "CenturyGothicRegular", "Century Gothic", Arial, Helvetica, sans-serif;
+}
+
+div.tabs div.tab{
+    display: block;
+    height: 58px;
+    background: #eeeeea;
+    border: #d6d6d2 solid 1px;
+    border-top: none;
+    position: relative;
+   	color: #73736b;
+}
+
+div.tabs div.link{
+	padding-left: 20px;
+	padding-top:20px;
+	font-family: "CenturyGothicRegular", "Century Gothic", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+div.tabs div.tab.selected{
+    color: #ffffff;
+    border-right-color: #aeaeaa;
+}
+
+div.tabs div.tab.selected{
+    background: url(/wp-content/themes/donaulab/img/catalogs/menuSelBack.png) repeat-x;
+    border-right-color: #7c7c77;
+}
+
+
+
+div.tabs div.tab.first{
+	border-top: #dbdbb7 solid 1px;
+	-moz-border-radius-topleft: 13px;
+	border-top-left-radius: 13px;
+}
+
+div.tabs div.tab.last{
+	-moz-border-radius-bottomleft: 13px;
+	border-bottom-left-radius: 13px;
+}
+
+div.tabs div.tab div.arrow{
+    position: absolute;
+    background: url(/wp-content/themes/donaulab/img/catalogs/homeSelArrow.png) no-repeat;
+    height: 58px;
+    width: 17px;
+    left: 100%;
+    top: 0px;
+    display: none;
+}
+
+div.tabs div.tab.selected div.arrow{
+    display: block;
+}
+
+.tab{
+  z-index: 999;
+}
+
+.conteiner{
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.producer-node{
+  float: left;
+  margin: 10px;
+}
+
+.enum-file.stacked .file-node {
+    min-height: 58px;
+    padding-left: 80px;
+    padding-bottom: 20px;
+    margin-top: 16px;
+    border-bottom: 1px solid #f1f2f2;
+}
