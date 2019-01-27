@@ -223,10 +223,10 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
                 $filesize = size_format($filesize, 2);
                 $path_info = pathinfo( get_attached_file( $file_url ) );
                 ?>
-
+<? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
               <div class="file-node" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
-                 <a class="file-label" href="<?php echo $url; ?>" target='_blank' title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
+                 <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
                  <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
                </div>
 
@@ -256,6 +256,48 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
 
 
 <?if ( $the_query->have_posts() ) : ?>
+<? $array_norepeat = [];?>
+<?php while ( $the_query->have_posts() ) : $the_query->the_post(); $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
+
+  <?php
+  $file_url = get_field('file_url');
+  $file_name = get_field('file_name');
+  $catalog_target = get_field('catalog_target');
+  $brand_name = get_field('brand_name');
+  $brand_img = get_field('brand_img');
+  $miniature_photo = get_field('miniature_photo');
+  $true_false = get_field('true_false');
+
+  $url = wp_get_attachment_url( $file_url );
+  $filesize = filesize( get_attached_file( $file_url ) );
+  $filesize = size_format($filesize, 2);
+  $path_info = pathinfo( get_attached_file( $file_url ) );
+  ?>
+  <? if($brand_img == "") $brand_img = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-300x200.jpg";?>
+
+  <? if (in_array($brand_name, $array_norepeat)) continue; ?>
+  <? $array_norepeat[] = $brand_name;?>
+
+  <div class="producer-node" onClick="Animate2id('<?=rus2translit($brand_name);?>'); return false">
+    <a href="#top_wrapper"><img class="" src="<?=$brand_img;?>" alt="<?=$brand_name;?>"></a>
+  </div>
+
+
+
+<?php endwhile; ?><!-- END of Post -->
+<?php endif; wp_reset_query(); ?>
+
+        <div class="producer-node-bnt">
+          <button class="btn-show-all" style="display: none;">Показать все Бренды</button>
+        </div>
+
+      </div><!-- node-wrap -->
+
+
+
+      <div class="enum-file stacked" id="top_wrapper">
+
+<?if ( $the_query->have_posts() ) : ?>
 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
 
   <?php
@@ -273,151 +315,17 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
   $path_info = pathinfo( get_attached_file( $file_url ) );
   ?>
 
+<? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
-  <div class="producer-node" onClick="Animate2id(<?=rus2translit("".$brand_name."");?>); return false">
-    <a href="#top_wrapper"><img class="" src="<?=$brand_img;?>" alt="Arctiko"></a>
-  </div>
-
+  <div class="file-node file-hidden hide-node" data-prof="<?=$brand_name;?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
+     <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
+     <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
+   </div>
 
 
 <?php endwhile; ?><!-- END of Post -->
 <?php endif; wp_reset_query(); ?>
 
-
-        <div class="producer-node" onClick="Animate2id('analitics'); return false">
-          <a href="#top_wrapper"><img class="" src="/wp-content/themes/donaulab/images/logos/arctiko.jpg" alt="Arctiko"></a>
-        </div>
-
-        <div class="producer-node" onClick="Animate2id('analitics'); return false">
-          <a href="#top_wrapper"><img class="" src="/wp-content/themes/donaulab/images/logos/asahi.jpg" alt=""></a>
-        </div>
-
-        <div class="producer-node" onClick="Animate2id('analitics'); return false">
-          <a href="#top_wrapper"><img class="" src="/wp-content/themes/donaulab/images/logos/astell.jpg" alt=""></a>
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/bicasa.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/buchi.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/camag.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/charles_ischi.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/christ.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/farmalabor.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/filtra.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/gf.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/gibertini1.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/huber.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/IKA.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/integra.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/ismatec.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/juchheim.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/liebherr.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/miele.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/naber.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/ohaus.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/rousselet-robatel.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/sartorius.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/sci.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/sigma.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/systec.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/topindlogo.jpg" alt="">
-        </div>
-
-        <div class="producer-node">
-          <img class="" src="/wp-content/themes/donaulab/images/logos/YL.jpg" alt="">
-        </div>
-
-        <div class="producer-node-bnt">
-          <button class="btn-show-all" style="display: none;">Показать все Бренды</button>
-        </div>
-
-
-      </div><!-- node-wrap -->
-
-
-
-      <div class="enum-file stacked" id="top_wrapper">
-
-
-        <div class="file-node file-hidden hide-node" data-prof="analitics" style="background:url(http://www.millab.ru/files/upload/khimiya.png) no-repeat;">
-          <a class="file-label" href="temp-link" data-href="http://donaulab.ru/wp-content/uploads/Rukovodstvo_po_ekspluatatsii_EUROSTAR_200_200_P4_control.pdf" title="Оборудование для химических и&nbsp;испытательных лабораторий">Оборудование для химических и&nbsp;испытательных лабораторий</a>
-          <div class="file-spec">(PDF, 24.5 Mb)</div>
-        </div>
-
-
-        <div class="file-node file-hidden hide-node" data-prof="microbiology" style="background:url(http://www.millab.ru/files/upload/khimiya.png) no-repeat;">
-          <a class="file-label" href="#" data-href="http://donaulab.ru/wp-content/uploads/Rukovodstvo_po_ekspluatatsii_EUROSTAR_200_200_P4_control.pdf" title="Каталог лабораторного оборудования для анализа нефти и&nbsp;нефтепродуктов">Каталог лабораторного оборудования для анализа нефти и&nbsp;нефтепродуктов</a>
-          <div class="file-spec">(PDF, 14.0 Mb)</div>
-        </div>
 
       </div>
 
@@ -428,36 +336,77 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
     <div class="tabcontent" id="tab_content_3">
       <h1>Каталоги по назначению</h1>
 
+      <?if ( $the_query->have_posts() ) : ?>
+      <? $array_norepeat_menu = [];?>
       <div id="menu">
-        <a href="#" onClick="Animate2id('analitics'); return false" title="Перейти к содержанию 1-ого элемента. Тип easing: default">Аналитическое оборудование</a>
-        <a href="#" onClick="Animate2id('microbiology'); return false" title="Перейти к содержанию 2-ого элемента.Тип easing: easeInOutExpo">Оборудование для синтеза</a>
-        <a href="#" onClick="Animate2id('analiznefty'); return false" title="Перейти к содержанию 3-ого элемента. Тип easing: easeOutQuint">Оборудование для пищевой индустрии</a>
-        <a href="#" onClick="Animate2id('testmaterials'); return false" title="Перейти к содержанию 4-ого элемента. Тип easing type: easeOutElastic">Общелабораторное оборудование</a>
-        <a href="#" onClick="Animate2id('sintez'); return false" title="Перейти к содержанию 5-ого элемента. Тип easing type: easeOutBack">Лабораторная мебель</a>
-        <a href="#" onClick="Animate2id('tempo'); return false" title="Перейти к содержанию 6-ого элемента. Тип easing type: easeOutBounce">Испытание материалов</a>
-        <a href="#" onClick="Animate2id('vacum'); return false" title="Перейти к содержанию 6-ого элемента. Тип easing type: easeOutBounce">Микробиология</a>
-        <a href="#" onClick="Animate2id('obshelaborat'); return false" title="Перейти к содержанию 6-ого элемента. Тип easing type: easeOutBounce">Оборудование для фармацевтической индустрии</a>
-      </div>
+      <?php while ( $the_query->have_posts() ) : $the_query->the_post(); $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
+
+        <?php
+        $file_url = get_field('file_url');
+        $file_name = get_field('file_name');
+        $catalog_target = get_field('catalog_target');
+        $brand_name = get_field('brand_name');
+        $brand_img = get_field('brand_img');
+        $miniature_photo = get_field('miniature_photo');
+        $true_false = get_field('true_false');
+
+        $url = wp_get_attachment_url( $file_url );
+        $filesize = filesize( get_attached_file( $file_url ) );
+        $filesize = size_format($filesize, 2);
+        $path_info = pathinfo( get_attached_file( $file_url ) );
+        ?>
+
+        <? if (in_array($catalog_target, $array_norepeat_menu)) continue; ?>
+        <? $array_norepeat_menu[] = $catalog_target;?>
+
+        <a href="#" onClick="Animate2id('<?=rus2translit($catalog_target);?>'); return false" title=""><?=$catalog_target;?></a>
+
+
+      <?php endwhile; ?><!-- END of Post -->
+      </div><!--END #menu-->
+      <?php endif; wp_reset_query(); ?>
 
       <div class="enum-file stacked">
 
+        <?if ( $the_query->have_posts() ) : ?>
+        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
 
-        <div class="file-node file-hidden hide-node" data-prof="analitics" style="background:url(http://www.millab.ru/files/upload/khimiya.png) no-repeat;">
-          <a class="file-label" href="temp-link" data-href="http://donaulab.ru/wp-content/uploads/Rukovodstvo_po_ekspluatatsii_EUROSTAR_200_200_P4_control.pdf" title="Оборудование для химических и&nbsp;испытательных лабораторий">Оборудование для химических и&nbsp;испытательных лабораторий</a>
-          <div class="file-spec">(PDF, 24.5 Mb)</div>
-        </div>
+          <?php
+          $file_url = get_field('file_url');
+          $file_name = get_field('file_name');
+          $catalog_target = get_field('catalog_target');
+          $brand_name = get_field('brand_name');
+          $brand_img = get_field('brand_img');
+          $miniature_photo = get_field('miniature_photo');
+          $true_false = get_field('true_false');
+
+          $url = wp_get_attachment_url( $file_url );
+          $filesize = filesize( get_attached_file( $file_url ) );
+          $filesize = size_format($filesize, 2);
+          $path_info = pathinfo( get_attached_file( $file_url ) );
+          ?>
+
+          <? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
 
-        <div class="file-node file-hidden hide-node" data-prof="microbiology" style="background:url(http://www.millab.ru/files/upload/khimiya.png) no-repeat;">
+        <div class="file-node file-hidden hide-node" data-prof="<?=rus2translit($catalog_target);?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
+           <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
+           <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
+         </div>
+
+
+        <?php endwhile; ?><!-- END of Post -->
+        <?php endif; wp_reset_query(); ?>
+
+
+
+
+
+        <!-- <div class="file-node file-hidden hide-node" data-prof="microbiology" style="background:url(http://www.millab.ru/files/upload/khimiya.png) no-repeat;">
           <a class="file-label" href="#" data-href="http://donaulab.ru/wp-content/uploads/Rukovodstvo_po_ekspluatatsii_EUROSTAR_200_200_P4_control.pdf" title="Каталог лабораторного оборудования для анализа нефти и&nbsp;нефтепродуктов">Каталог лабораторного оборудования для анализа нефти и&nbsp;нефтепродуктов</a>
           <div class="file-spec">(PDF, 14.0 Mb)</div>
-        </div>
+        </div> -->
 
-
-        <div class="file-node file-hidden hide-node" data-prof="analiznefty" style="background:url(http://www.millab.ru/files/upload/khimiya.png) no-repeat;">
-          <a class="file-label" href="#" data-href="http://donaulab.ru/wp-content/uploads/Rukovodstvo_po_ekspluatatsii_EUROSTAR_200_200_P4_control.pdf" title="Оборудование и&nbsp;решения для исследовательского и&nbsp;пилотного синтеза">Оборудование и&nbsp;решения для исследовательского и&nbsp;пилотного синтеза</a>
-          <div class="file-spec">(PDF, 3.3 Mb)</div>
-        </div>
 
 
       </div><!-- enum-file stacked -->
@@ -470,7 +419,7 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
 
 
 
-<a name="sem-forma"></a>
+<!-- <a name="sem-forma"></a> -->
 
 
 
