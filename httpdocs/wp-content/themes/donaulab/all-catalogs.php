@@ -40,6 +40,7 @@
         crossorigin="anonymous"></script> -->
         <!-- <script type="text/javascript" src="http://donaulab.ru/wp-content/themes/donaulab/js/jquery.easing.1.3.js"></script> -->
         <script type="text/javascript" src="http://donaulab.ru/js/jquery.js"></script>
+        <script type="text/javascript" src="http://donaulab.ru/js/jquery.session.js"></script>
 
         <!-- <script src="/wp-content/themes/donaulab/js/dm-modal.js"></script> -->
 
@@ -212,12 +213,14 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
 
                 <?php
+
                 $file_url = get_field('file_url');
                 $file_name = get_field('file_name');
                 $catalog_target = get_field('catalog_target');
                 $miniature_photo = get_field('miniature_photo');
                 $true_false = get_field('true_false');
 
+                if($true_false[0] !== 'yes') continue;
                 $url = wp_get_attachment_url( $file_url );
                 $filesize = filesize( get_attached_file( $file_url ) );
                 $filesize = size_format($filesize, 2);
@@ -317,7 +320,7 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
 
 <? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
-  <div class="file-node file-hidden hide-node" data-prof="<?=$brand_name;?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
+  <div class="file-node file-hidden hide-node" data-prof="<?=rus2translit($brand_name);?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
      <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
      <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
    </div>
@@ -445,6 +448,7 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
 
     var ELEM_TO_DL,interv,datahref;
     var FLAG = false;
+    var CATALOG_NAME = "";
 
     $('#menu > a').click(function(){
       var this_elem = $(this);
@@ -510,6 +514,8 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
     function open_link(){
       $('a.file-label[data-href]').click(function(){
         console.log('link click form open');
+        console.log('CATALOG_NAME = '+$(this).text());
+        CATALOG_NAME = $(this).text();
         ELEM_TO_DL = $(this);
         datahref = ELEM_TO_DL.data('href');
         pupupStart();
@@ -528,6 +534,9 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
               .css('display', 'block') // убирaем у мoдaльнoгo oкнa display: none;
               .animate({opacity: 1, top: '35%'}, 200); // плaвнo прибaвляем прoзрaчнoсть oднoвременнo сo съезжaнием вниз
             });
+          setTimeout(function(){
+          	$('input[name=catalog]').val(CATALOG_NAME).attr('disabled',false);
+          },1500);
         }
 
 
@@ -567,6 +576,11 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
         }
         );
     });
+
+
+
+
+
 
 });
 </script>
