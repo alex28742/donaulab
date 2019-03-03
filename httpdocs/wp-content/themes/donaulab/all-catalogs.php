@@ -221,6 +221,8 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
                 $true_false = get_field('true_false');
 
                 if($true_false[0] !== 'yes') continue;
+                $brand_name = get_field('brand_name');
+                if($brand_name == 'buchi') { $noindex_a = "<noindex>"; $noindex_b = "</noindex>";} else {$noindex_a = ""; $noindex_b = "";}
                 $url = wp_get_attachment_url( $file_url );
                 $filesize = filesize( get_attached_file( $file_url ) );
                 $filesize = size_format($filesize, 2);
@@ -228,10 +230,10 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
                 ?>
 <? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
-              <div class="file-node" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
+              <?=$noindex_a;?><div class="file-node" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
                  <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
                  <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
-               </div>
+               </div><?=$noindex_b;?>
 
 
              <?php endwhile; ?><!-- END of Post -->
@@ -270,6 +272,7 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
   $brand_img = get_field('brand_img');
   $miniature_photo = get_field('miniature_photo');
   $true_false = get_field('true_false');
+  if($brand_name == 'buchi') { $noindex_a = "<noindex>"; $noindex_b = "</noindex>";} else {$noindex_a = ""; $noindex_b = "";}
 
   $url = wp_get_attachment_url( $file_url );
   $filesize = filesize( get_attached_file( $file_url ) );
@@ -281,9 +284,9 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
   <? if (in_array($brand_name, $array_norepeat)) continue; ?>
   <? $array_norepeat[] = $brand_name;?>
 
-  <div class="producer-node" onClick="Animate2id('<?=rus2translit($brand_name);?>'); return false">
+  <?=$noindex_a;?><div class="producer-node" onClick="Animate2id('<?=rus2translit($brand_name);?>'); return false">
     <a href="#top_wrapper"><img class="" src="<?=$brand_img;?>" alt="<?=$brand_name;?>"></a>
-  </div>
+  </div><?=$noindex_b;?>
 
 
 
@@ -311,7 +314,7 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
   $brand_img = get_field('brand_img');
   $miniature_photo = get_field('miniature_photo');
   $true_false = get_field('true_false');
-
+  if($brand_name == 'buchi') { $noindex_a = "<noindex>"; $noindex_b = "</noindex>";} else {$noindex_a = ""; $noindex_b = "";}
   $url = wp_get_attachment_url( $file_url );
   $filesize = filesize( get_attached_file( $file_url ) );
   $filesize = size_format($filesize, 2);
@@ -320,10 +323,10 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
 
 <? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
-  <div class="file-node file-hidden hide-node" data-prof="<?=rus2translit($brand_name);?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
+  <?=$noindex_a;?><div class="file-node file-hidden hide-node" data-prof="<?=rus2translit($brand_name);?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
      <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
      <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
-   </div>
+   </div><?=$noindex_b;?>
 
 
 <?php endwhile; ?><!-- END of Post -->
@@ -382,7 +385,7 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
           $brand_img = get_field('brand_img');
           $miniature_photo = get_field('miniature_photo');
           $true_false = get_field('true_false');
-
+          if($brand_name == 'buchi') { $noindex_a = "<noindex>"; $noindex_b = "</noindex>";} else {$noindex_a = ""; $noindex_b = "";}
           $url = wp_get_attachment_url( $file_url );
           $filesize = filesize( get_attached_file( $file_url ) );
           $filesize = size_format($filesize, 2);
@@ -392,10 +395,10 @@ jQuery(document).on('ready post-load', easy_fancybox_handler );
           <? if($miniature_photo == "") $miniature_photo = "http://donaulab.ru/wp-content/uploads/2019/01/noimage-48x68.jpg";?>
 
 
-        <div class="file-node file-hidden hide-node" data-prof="<?=rus2translit($catalog_target);?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
+        <?=$noindex_a;?><div class="file-node file-hidden hide-node" data-prof="<?=rus2translit($catalog_target);?>" style="background:url(<?php echo $miniature_photo; ?>) no-repeat;">
            <a class="file-label" href="<?php echo $url; ?>" data-href="<?php echo $url; ?>" title="<?php echo $file_name; ?>"><?php echo $file_name; ?></a>
            <div class="file-spec">(<?php echo $path_info['extension']; ?>, <?php echo $filesize; ?>)</div>
-         </div>
+         </div><?=$noindex_b;?>
 
 
         <?php endwhile; ?><!-- END of Post -->
